@@ -1,4 +1,4 @@
-from MovAvg import MovAvg
+from extra.MovAvg import MovAvg
 import numpy as np
 
 # x = np.array(100)
