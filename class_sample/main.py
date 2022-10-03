@@ -58,7 +58,7 @@ class GetData(GetFile):
 class BuildGraph(GetData):
 
     def build_graph(self, data):
-        df = pd.DataFrame({'Time': data[0], 'Data': data[1]})
+        df = pd.DataFrame({'Time':data[0], 'Data':data[1]})
         df.plot.line(y='Data', x='Time')
 
 
