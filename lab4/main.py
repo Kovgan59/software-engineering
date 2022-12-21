@@ -14,7 +14,7 @@ class Clock:
 
     @staticmethod
     def __getForm(x):
-        return str(x) if x > 9 else "0"+str(x)
+        return str(x) if x > 9 else "0" + str(x)
 
     def getSeconds(self):
         return self.__sec 
@@ -38,3 +38,7 @@ c5 = Clock(3200)                   # дорога до дома
 c6 = c0 - (c1 + c2 + c3 + c4 + c5) # остается времени до сна
 
 print(f"Времени до начала следующего дня: {c6.getFormatTime()}")   
+
+# c7 = Clock(12.31)
+# c7 = c0 + 31
+# print(c7)
