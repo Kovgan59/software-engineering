@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <link type="text/css" href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+  <meta charset="utf-8"/> 
+  <title>G01-codes (result)</title>
+</head>
+<body>
+  <form method="get" action="/">
+    <div>
+        <button id = "back_button"> Вернуться назад </button>
+    </div>
+  </form>
+  <br>
+  <div id="img_div">
+    <img id="original_image" src="data:image/png;base64,{{ image | safe }}" >
+    <br>
+    <p>Original Image</p>
+  </div>
+  {% if success_flag == True -%}
+  <div id="img_div">
+  <img id="original_image" src="data:image/png;base64,{{ image2 | safe }}" >
+  <br>
+  <p>Image with main dots</p>
+  </div>
+  {% endif -%}
+  <br>
+  {% if success_flag == True -%}
+  <p><b>G-код:</b></p>
+  {% endif -%}
+  {% for str in text -%}
+  <p>
+      {{str}}
+  </p>
+  {% endfor -%}
+
+</body>
+</html>

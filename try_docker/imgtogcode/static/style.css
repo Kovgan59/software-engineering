@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    text-align: left;
+}
+
+p {
+    padding-bottom: 5px;
+}
+
+#img_div{
+    display: inline-block;
+    text-align: center;
+}
+
+#original_image{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(0, 0, 0);
+    height: 320px;
+    width: 320px;
+}
+
+#load_button{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#back_button{
+    padding-left: 10px;
+    padding-right: 10px;
+}
