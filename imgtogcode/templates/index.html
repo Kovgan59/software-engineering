@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <link type="text/css" href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+  <meta charset="utf-8"/> 
+  <title>G01-codes</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="/upload">
+        <div>
+          <label for="file"></label>
+          <input type="file" id="file" name="file"
+                accept=".png">
+        </div>
+        <br>
+        <div>
+          <button id = "load_button">Загрузить</button>
+        </div>
+      </form>
+</body>
+</html>
