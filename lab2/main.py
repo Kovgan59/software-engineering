@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter.filedialog import askopenfilename
-
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -9,7 +8,7 @@ class GetFile:
     
     file_path = ""
     file_name = ""
-    
+
     
     def get_filepath(self):
         global file_path
