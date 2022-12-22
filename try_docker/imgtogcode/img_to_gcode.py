@@ -127,3 +127,59 @@ def gcodes_start(im):
         export_img = []
         
     return text, export_img
+
+
+
+if __name__ == '__main__':
+    path = choose_img_ui()
+    im = import_img(path)
+    thresh = thresh_im(im)
+    med_axis = medline(thresh)
+    endpoint = find_endpoint(med_axis)
+    sorted = sort_pixels(med_axis, endpoint)
+    sorted_rdp = rdp(sorted, epsilon=0.7)
+
+    fig, axes = plt.subplots(2, 3, figsize=(12, 8), sharex=True, sharey=True)
+    ax = axes.ravel()
+
+    ax[0].imshow(im, cmap=plt.cm.gray)
+    ax[0].set_title('Original')
+    ax[0].axis('off')
+
+    ax[1].imshow(thresh, cmap=plt.cm.gray)
+    ax[1].set_title('Black-n-White')
+    ax[1].axis('off')
+
+    med_axis[endpoint[0]][endpoint[1]] = 127 # показать начальную точку сортировки
+    ax[2].imshow(med_axis, cmap='magma')
+    ax[2].contour(thresh, [0.5], colors='b')
+    ax[2].set_title('Medial axis')
+    ax[2].axis('off')
+
+    # проверка отсортированного списка
+    w = np.shape(im)[0]
+    h = np.shape(im)[1]
+    check = np.zeros((w,h))
+    for i in range(len(sorted)):
+        check[sorted[i][0]][sorted[i][1]] = 255
+
+    ax[3].imshow(check, cmap='magma')
+    ax[3].contour(thresh, [0.5], colors='b')
+    ax[3].set_title('Check sorted')
+    ax[3].axis('off')
+
+    # проверка Ramer Douglas Peucer implementation
+    w = np.shape(im)[0]
+    h = np.shape(im)[1]
+    check_rdp = np.zeros((w,h))
+    for i in range(len(sorted_rdp)):
+        check_rdp[sorted_rdp[i][0]][sorted_rdp[i][1]] = 255
+
+    ax[4].imshow(check_rdp, cmap='magma')
+    ax[4].contour(thresh, [0.5], colors='b')
+    ax[4].set_title('Check RDPi')
+    ax[4].axis('off')
+    fig.tight_layout()
+    plt.show()
+
+    kek = 1
